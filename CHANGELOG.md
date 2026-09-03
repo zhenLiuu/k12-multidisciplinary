@@ -4,7 +4,7 @@
 
 ## [Unreleased]
 
-- v0.1.0 本地 GitHub/Hugging Face 发布候选已生成并验证，尚未上传远端。
+- v0.1.0 已发布至 GitHub 与 Hugging Face，并完成远端文件路径、大小和 LFS SHA-256 校验。
 - 训练集明确不进入首个公开版本，后续是否发布另行决定。
 - 泄漏审计按维护者决定暂不执行。
 

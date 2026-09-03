@@ -36,14 +36,12 @@ def replace_placeholders(path: Path, replacements: dict[str, str]) -> dict[str, 
 def refresh_hf_manifests(release: Path) -> None:
     manifest_path = release / "manifest.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    readme = release / "README.md"
     for artifact in manifest["artifacts"]:
-        if artifact["path"] == "README.md":
-            artifact["bytes"] = readme.stat().st_size
-            artifact["sha256"] = sha256(readme)
-            break
-    else:
-        raise RuntimeError("README.md is missing from manifest.json")
+        path = release / artifact["path"]
+        if not path.is_file():
+            raise RuntimeError(f"Artifact is missing: {path}")
+        artifact["bytes"] = path.stat().st_size
+        artifact["sha256"] = sha256(path)
     manifest_path.write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",

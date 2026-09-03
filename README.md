@@ -45,4 +45,4 @@ print(dataset["raw"][0])
 
 ## 版本
 
-当前发布候选版本为 `v0.1.0`，变更记录见 [`CHANGELOG.md`](CHANGELOG.md)。
+当前发布版本为 `v0.1.0`，变更记录见 [`CHANGELOG.md`](CHANGELOG.md)。
