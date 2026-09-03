@@ -6,7 +6,7 @@
 
 v0.1.0 共包含 736,701 条记录：`raw` 735,650 条，公开参考测试集 `test` 1,051 条。515,572 条记录包含图片，占 69.98%；共发布 416,634 张按内容寻址去重后的图片。测试集保留答案，不作为隐藏榜单。
 
-完整数据托管在 Hugging Face：**发布前将此处替换为 `https://huggingface.co/datasets/zhenliuu/k12-multidisciplinary`**。
+完整数据已发布至 [Hugging Face](https://huggingface.co/datasets/zhenliuu/k12-multidisciplinary)。
 
 ## 数据结构
 
@@ -25,24 +25,20 @@ v0.1.0 共包含 736,701 条记录：`raw` 735,650 条，公开参考测试集 `
 from datasets import load_dataset
 
 dataset = load_dataset("zhenliuu/k12-multidisciplinary")
-print(dataset["raw"][0])
+sample = dataset["raw"][0]
+print(sample["id"])
+print(sample["subject"], sample["question_type"], sample["answer"])
+print(sample["images"][0]["path"])
+```
+
+```text
+k12_37ef67db045694272e0df54a6ea1ab26a40f0c092b8cc45ba11db7b9eee97a7d
+math multiple_choice ['C']
+images/5f/5fa6f571b1d65fafb7a04e2e422f74bbc4a7328381d05de8b205db1d6b10cc42.png
 ```
 
 图片不内嵌在 Parquet 中。读取记录的 `images[].path` 后，先查询 HF 仓库里的 `images/index.parquet`，再从对应 tar 分片提取同名成员。
 
-## 仓库内容
-
-- `scripts/`：清洗、审计、构建和发布验证程序。
-- `release/v0.1.0/`：冻结的字段 schema 与发布规范。
-- `reports/`：最终冻结、构建和发布包验证摘要。
-- `PUBLISHING.md`：维护者发布步骤。
-
-完整数据不提交到 GitHub；GitHub 仅保存代码、规范和小型审计摘要。
-
-## 完整性
-
-最终冻结检查满足：schema 不合法记录为 0、ID 冲突为 0、缺失图片为 0、孤立图片为 0、精确重复题为 0、重复题答案冲突为 0、raw/test 精确交叉重复为 0。HF 发布包还会执行逐记录 Parquet 往返一致性、tar 成员闭包和所有发布文件 SHA-256 校验。
-
 ## 版本
 
-当前发布版本为 `v0.1.0`，变更记录见 [`CHANGELOG.md`](CHANGELOG.md)。
+当前发布版本为 `v0.1.0`。
