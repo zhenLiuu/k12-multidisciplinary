@@ -1,0 +1,64 @@
+{
+  "generated_at": "2026-09-03T09:43:26.611133+00:00",
+  "status": "pass",
+  "freeze_candidate": true,
+  "records": 736701,
+  "splits": {
+    "raw": 735650,
+    "test": 1051
+  },
+  "files": {
+    "data/processed/raw/all_disciplines_with_idx.jsonl": {
+      "sha256": "13e6d3bbf69cd2c1a41280c4a65b9fb66315474cbe6faa798660e08d693d0ec9",
+      "bytes": 951821534
+    },
+    "data/processed/raw/math_non_mc.jsonl": {
+      "sha256": "91a32749b43806dfd623a96b955b6b94883dcb8d6112cac438100e9c668d4dd5",
+      "bytes": 20040233
+    },
+    "data/processed/raw/merge_multiple_choice.jsonl": {
+      "sha256": "b695a7dfce8915944837fb3bffd15c38461cc10e9948faa80de6b71debd8f57f",
+      "bytes": 11054074
+    },
+    "data/processed/test/final_data_v8.2.json": {
+      "sha256": "04d4fb425ee75f32b2555d234021875273472bd6b89dbe146f3d9db1b72d3469",
+      "bytes": 2292202
+    }
+  },
+  "checks": {
+    "source_attribution_prefix_rule_hits": 0,
+    "source_attribution_id_collisions": 0,
+    "exact_duplicate_groups": 0,
+    "conflicting_answer_groups": 0,
+    "cross_split_exact_duplicate_groups": 0,
+    "invalid_schema_records": 0,
+    "duplicate_public_ids": 0,
+    "non_reproducible_public_ids": 0,
+    "missing_referenced_images": 0,
+    "orphan_packaged_images": 0,
+    "image_content_hash_issues": 0
+  },
+  "images": {
+    "processed_records": 736701,
+    "processed_records_with_images": 515572,
+    "processed_image_references": 541953,
+    "unique_referenced_images": 416634,
+    "packaged_image_files": 416634,
+    "missing_referenced_images": 0,
+    "orphan_packaged_images": 0,
+    "issue_occurrences": 0
+  },
+  "reports": {
+    "source_prefix_scan": "reports/source_attribution_cleanup/dry_run_report.json",
+    "source_collision_resolution": "reports/source_attribution_cleanup/final_collision_resolution_summary.json",
+    "exact_duplicate_index": "reports/final_schema_dedup/post_attribution_resolution_index/preparation_summary.json",
+    "id_map": "reports/final_schema_dedup/id_map_regeneration.json",
+    "structure": "reports/structure_fix/verification_report.json",
+    "release_schema": "reports/release_schema_validation.json",
+    "images": "reports/structure_fix/final_image_verification.json"
+  },
+  "skipped_by_maintainer": [
+    "stratified semantic content sampling",
+    "expanded K12 scope/grade/knowledge-point and residual advertisement/navigation/OCR-noise review"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "generated_at": "2026-09-03T11:59:24.045848+00:00",
+  "output": "dist/v0.1.0/huggingface",
+  "artifacts": 15,
+  "bytes": 9472318316,
+  "parquet_shards": 2,
+  "image_tar_shards": 9,
+  "image_members": 416634,
+  "manifest": "dist/v0.1.0/huggingface/manifest.json"
+}

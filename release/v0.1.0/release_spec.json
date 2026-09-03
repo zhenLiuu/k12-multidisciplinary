@@ -1,0 +1,106 @@
+{
+  "dataset_version": "0.1.0",
+  "release_tag": "v0.1.0",
+  "schema_version": "1.0.0",
+  "status": "release_candidate",
+  "scope": {
+    "included_splits": {
+      "raw": {
+        "records": 735650,
+        "sources": [
+          "all_disciplines_with_idx",
+          "math_non_mc",
+          "merge_multiple_choice"
+        ]
+      },
+      "test": {
+        "records": 1051,
+        "sources": [
+          "final_data_v8.2"
+        ],
+        "note": "Public reference test with answers; not a hidden benchmark."
+      }
+    },
+    "excluded": [
+      "train_non_mc_v2.jsonl",
+      "train_mc.jsonl"
+    ]
+  },
+  "distribution": {
+    "github": {
+      "contents": [
+        "README and dataset card",
+        "schema and release specification",
+        "processing and verification scripts",
+        "SHA-256 manifests"
+      ],
+      "full_dataset": false
+    },
+    "huggingface": {
+      "contents": [
+        "full Parquet question shards",
+        "full image tar shards",
+        "dataset card",
+        "SHA-256 manifests"
+      ],
+      "dataset_card_data_files_mapping_required": true
+    }
+  },
+  "question_artifacts": {
+    "format": "parquet",
+    "compression": "zstd",
+    "compression_level": 9,
+    "target_shard_bytes": 268435456,
+    "hard_max_shard_bytes": 536870912,
+    "row_group_target_rows": 50000,
+    "encoding": "UTF-8 logical strings",
+    "record_order": "source_file order from the release spec, then original processed record order",
+    "filenames": {
+      "raw": "data/raw-00000-of-NNNNN.parquet",
+      "test": "data/test-00000-of-00001.parquet"
+    }
+  },
+  "image_artifacts": {
+    "format": "POSIX tar, WebDataset-compatible container",
+    "compression": "none",
+    "compression_reason": "The image payloads are already compressed; outer compression impairs streaming and random access for little expected gain.",
+    "target_shard_bytes": 1073741824,
+    "hard_max_shard_bytes": 1342177280,
+    "member_order": "lexicographic packaged image path",
+    "member_paths": "preserve images/<sha256-prefix>/<sha256>.<ext>",
+    "filenames": "images/images-00000-of-NNNNN.tar",
+    "index": "images/index.parquet maps path to shard, bytes and SHA-256"
+  },
+  "record_schema": {
+    "id": "string, required",
+    "source_id": "string, required",
+    "source_file": "string, required",
+    "split": "enum(raw,test), required",
+    "question_type": "enum(multiple_choice,non_multiple_choice), required",
+    "subject": "enum(math,physics,biology,geography,chemistry), required",
+    "language": "enum(zh,en), required",
+    "question": "string, required",
+    "options": "list<struct<label:string,text:string>>, required",
+    "answer": "list<string>, required and non-empty",
+    "explanation": "string, required; empty string means unavailable",
+    "images": "list<struct<path:string,caption:string,part_of:string>>, required",
+    "table": "list<struct<caption:string|null,path:list<list<string|null>>,part_of:string>>, required",
+    "sub_questions": "list<string>, required",
+    "metadata": "struct with optional source_index:int64, source_question_type:string, cot:bool, resource:string, tag:list<string>, source_explanation_parts:list<string>, error:string; required outer object"
+  },
+  "release_requirements": {
+    "manifest": "SHA-256, byte size and record/member count for every artifact",
+    "atomic_build": true,
+    "deterministic_build": true,
+    "verify_after_build": true,
+    "git_repository_initialization": false
+  },
+  "known_data_quality": {
+    "exact_duplicate_groups_before_final_resolution": 16683,
+    "records_in_exact_duplicate_groups_before_final_resolution": 33505,
+    "conflicting_answer_groups_before_final_resolution": 115,
+    "exact_duplicate_groups_after_final_resolution": 0,
+    "conflicting_answer_groups_after_final_resolution": 0,
+    "decision": "resolved; consistent groups were deterministically deduplicated and conflicting groups were reviewed with gemini-3.7-flash-medium"
+  }
+}

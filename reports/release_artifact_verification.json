@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-09-03T12:42:58.589782+00:00",
+  "valid": true,
+  "release": "dist/v0.1.0/huggingface",
+  "checksum_entries": 16,
+  "parquet_files": 2,
+  "parquet_records": {
+    "raw": 735650,
+    "test": 1051
+  },
+  "round_trip_records": {
+    "raw": 735650,
+    "test": 1051
+  },
+  "image_index_records": 416634,
+  "tar_members": 416634,
+  "errors": {
+    "index_paths_missing_from_tar": 0,
+    "tar_paths_missing_from_index": 0
+  }
+}

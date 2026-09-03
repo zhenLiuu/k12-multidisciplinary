@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-09-03T09:37:44.354127+00:00",
+  "schema": "release/v0.1.0/record.schema.json",
+  "valid": true,
+  "records": 736701,
+  "invalid_records": 0,
+  "files": {
+    "data/processed/raw/all_disciplines_with_idx.jsonl": 705210,
+    "data/processed/raw/math_non_mc.jsonl": 23284,
+    "data/processed/raw/merge_multiple_choice.jsonl": 7156,
+    "data/processed/test/final_data_v8.2.json": 1051
+  },
+  "error_examples": []
+}
