@@ -8,6 +8,20 @@ v0.1.0 共包含 736,701 条记录：`raw` 735,650 条，公开参考测试集 `
 
 完整数据已发布至 [Hugging Face](https://huggingface.co/datasets/zhenliuu/k12-multidisciplinary)。
 
+## 数据统计
+
+<p align="center">
+  <img src="assets/subject_distribution.png" alt="原始数据的学科分布" width="100%">
+</p>
+
+<p align="center">
+  <img src="assets/modality_by_subject.png" alt="各学科含图题与纯文本题占比" width="49%">
+  <img src="assets/images_per_question.png" alt="每道题引用的图片数量分布" width="49%">
+</p>
+
+<p align="center"><sub>图表仅统计 <code>raw</code> split；“含图”表示题目引用至少一张图片。统计版本：v0.1.0。</sub></p>
+
+
 ## 数据结构
 
 | split | 记录数 | 用途 |
